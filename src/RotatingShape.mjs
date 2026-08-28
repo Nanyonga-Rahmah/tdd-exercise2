@@ -15,4 +15,14 @@ export class RotatingShape {
     toString() {
         return this.shape.join("\n") + "\n";
     }
+    rotateLeft() {
+        const rotated = this.shape[0]
+            .split("")
+            .map((_, column) =>
+                this.shape.map(row => row[this.shape[0].length - 1 - column]).join("")
+            );
+
+        return new RotatingShape(rotated);
+    }
+
 }

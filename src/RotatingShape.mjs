@@ -24,5 +24,14 @@ export class RotatingShape {
 
         return new RotatingShape(rotated);
     }
+    rotateRight() {
+        const rotated = this.shape[0]
+            .split("")
+            .map((_, column) =>
+                this.shape.map(row => row[column]).reverse().join("")
+            );
+
+        return new RotatingShape(rotated);
+    }
 
 }

@@ -28,7 +28,14 @@ export class Tetromino {
     }
 
     rotateRight() {
-        // Special case for the I shape
+          if (
+        this.shape.length === 3 &&
+        this.shape[0] === ".OO" &&
+        this.shape[1] === ".OO" &&
+        this.shape[2] === "..."
+    ) {
+        return new Tetromino(this.shape);
+    }
         if (this.shape.length === 5) {
             const isHorizontal = this.shape.some(row => row.includes("IIII"));
 
@@ -64,7 +71,7 @@ export class Tetromino {
     }
 
     rotateLeft() {
-        // The I shape has two orientations in this exercise
+        if (this.shape.length===3){}
         if (this.shape.length === 5) {
             const isHorizontal = this.shape.some(row => row.includes("IIII"));
 

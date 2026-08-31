@@ -1,18 +1,20 @@
-
 export class Tetromino {
     static T_SHAPE = new Tetromino([
         ".T.",
         "TTT",
         "..."
     ]);
-
+  
     constructor(shape) {
         this.shape = shape;
     }
-
     toString() {
-
-    return this.shape.join("\n") + "\n";
-   }
+        return this.shape.join("\n") + "\n";
+    }
+    rotateRight() {
+        const rotated = this.shape[0].split("").map((_, column) => this.shape.map(row => row[column]).reverse().join(""));
+        return new Tetromino(rotated);
+    }
+  
 }
 

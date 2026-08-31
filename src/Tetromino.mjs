@@ -71,8 +71,14 @@ export class Tetromino {
     }
 
     rotateLeft() {
-        if (this.shape.length===3){}
-        if (this.shape.length === 5) {
+  if (
+        this.shape.length === 3 &&
+        this.shape[0] === ".OO" &&
+        this.shape[1] === ".OO" &&
+        this.shape[2] === "..."
+    ) {
+        return new Tetromino(this.shape);
+    }        if (this.shape.length === 5) {
             const isHorizontal = this.shape.some(row => row.includes("IIII"));
 
             if (isHorizontal) {

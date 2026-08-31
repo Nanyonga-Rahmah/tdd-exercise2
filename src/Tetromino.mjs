@@ -4,6 +4,13 @@ export class Tetromino {
         "TTT",
         "..."
     ]);
+      static I_SHAPE = new Tetromino([
+        ".....",
+        ".....",
+        "IIII.",
+        ".....",
+        "....."
+    ]);
   
     constructor(shape) {
         this.shape = shape;

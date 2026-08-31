@@ -5,9 +5,16 @@ export class Board {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-  }
 
-  toString() {
-    return "...\n...\n...\n";
+    this.grid = Array.from(
+            { length: height },
+            () => Array(width).fill(".")
+        );
   }
+  toString() {
+        return this.grid
+            .map(row => row.join(""))
+            .join("\n") + "\n";
+    }
+ 
 }

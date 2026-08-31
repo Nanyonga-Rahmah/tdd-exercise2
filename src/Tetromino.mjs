@@ -13,6 +13,12 @@ export class Tetromino {
         "....."
     ]);
 
+    static O_SHAPE = new Tetromino([
+        ".OO",
+        ".OO",
+        "..."
+    ])
+
     constructor(shape) {
         this.shape = shape;
     }

@@ -16,5 +16,15 @@ export class Board {
             .map(row => row.join(""))
             .join("\n") + "\n";
     }
+   drop(tetromino) {
+    const shape = tetromino.shape;
+    const col = Math.floor((this.width - shape[0].length) / 2);
+
+    shape.forEach((row, r) => {
+        row.split("").forEach((cell, c) => {
+            if (cell !== ".") this.grid[r][col + c] = cell;
+        });
+    });
+}
  
 }

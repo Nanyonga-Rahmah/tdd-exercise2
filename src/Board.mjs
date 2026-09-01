@@ -7,24 +7,26 @@ export class Board {
     this.height = height;
 
     this.grid = Array.from(
-            { length: height },
-            () => Array(width).fill(".")
-        );
+      { length: height },
+      () => Array(width).fill(".")
+    );
   }
   toString() {
-        return this.grid
-            .map(row => row.join(""))
-            .join("\n") + "\n";
-    }
-   drop(tetromino) {
-    const shape = tetromino.shape;
-    const col = Math.floor((this.width - shape[0].length) / 2);
+    return this.grid
+      .map(row => row.join(""))
+      .join("\n") + "\n";
+  }
 
-    shape.forEach((row, r) => {
-        row.split("").forEach((cell, c) => {
-            if (cell !== ".") this.grid[r][col + c] = cell;
-        });
-    });
-}
- 
+  drop(tetromino) {
+    this.tetromino = tetromino;
+    this.row = 0;
+    this.col = Math.floor((this.width - tetromino.shape[0].length) / 2);
+    this.draw();
+  }
+
+  draw() {
+    this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."));
+    this.tetromino.shape.forEach((row, r) => row.split("").forEach((cell, c) => { if (cell !== ".") this.grid[this.row + r][this.col + c] = cell; }));
+  }
+
 }

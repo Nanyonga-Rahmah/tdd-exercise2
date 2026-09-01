@@ -28,5 +28,14 @@ export class Board {
     this.grid = Array.from({ length: this.height }, () => Array(this.width).fill("."));
     this.tetromino.shape.forEach((row, r) => row.split("").forEach((cell, c) => { if (cell !== ".") this.grid[this.row + r][this.col + c] = cell; }));
   }
-
+ canMoveDown() {
+  return this.tetromino.shape.every((row, r) =>
+    row.split("").every((cell, c) =>cell === "." || this.row + r + 1 < this.height
+    ));}
+  tick() {
+    if (this.canMoveDown()) {
+      this.row++;
+      this.draw();
+    }
+  }
 }
